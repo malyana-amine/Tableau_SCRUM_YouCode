@@ -312,30 +312,46 @@
 		<div class="modal-body">
 			<div class="mb-3">
 				<label  class="form-label">Title</label>
-				<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter card title">
+				<input type="text" class="form-control" id="title1" placeholder="Enter card title">
 			  </div>
 
 
 			  <div class="mb-3">
 				  <label  class="form-label">type</label>
 				  <div class="form-check">
-					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="feature">
 					  <label class="form-check-label" for="flexRadioDefault1">
 						Feature
 					  </label>
 					</div>
 					<div class="form-check pb-3">
-					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="Bug" checked>
 					  <label class="form-check-label" for="flexRadioDefault2">
 						Bug
 					  </label>
 					</div>
 
 
-				<div class="mb-3">
-				  <label  class="form-label">Status</label>
-				  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter card title">
-				</div>
+
+					<div class="col-md-4 w-100 mb-4">
+						<label for="inputState" class="form-label">Priority</label>
+						<select id="form_options_priority" class="form-select " required>
+						<option selected value="Hight">Hight</option>
+						<option value="medium">medium</option>
+						<option value="Low">Low</option>
+						</select>
+					</div>
+
+
+
+					<div class="col-md-4 w-100 mb-4">
+						<label for="inputState" class="form-label">status</label>
+						<select id="form_options_priority" class="form-select " required>
+						<option selected value="Hight">to do</option>
+						<option value="medium">in progress</option>
+						<option value="Low">done</option>
+						</select>
+					</div>
 
 
 				  <div class="md-form md-outline input-with-post-icon datepicker mb-3">
@@ -344,7 +360,7 @@
 				  </div>
 
 				  <div class="form-group">
-					  <label for="exampleFormControlTextarea1">Description</label>
+					  <label for="exampleFormControlTextarea1" id="description1">Description</label>
 					  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 				  </div>
 
@@ -353,7 +369,7 @@
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-muted rounded-pill text-black" data-bs-dismiss="modal">Cancel</button>
-		  <button type="button" class="btn btn-primary rounded-pill text-black">Save</button>
+		  <button type="button" class="btn btn-primary rounded-pill text-black" id="save1" onclick="saveTask()">Save</button>
 		</div>
 	  </div>
 	</div>
@@ -366,6 +382,7 @@
 	<!-- ================== BEGIN core-js ================== -->
 	<script src="assets/js/vendor.min.js"></script>
 	<script src="assets/js/app.min.js"></script>
+	<script src="assets/js/main.js"></script>
 	<!-- ================== END core-js ================== -->
 </body>
 </html>
