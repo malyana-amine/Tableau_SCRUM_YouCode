@@ -15,18 +15,10 @@ function createTask() {
 function saveTask() {
     // Recuperer task attributes a partir les champs input
 
-    var checked;
-    if(Bug,checked){
-        checked = "Bug";
-    }
-    else if(feature,checked){
-        checked = "Feature";
-    }
     // Créez task object
 
-    const temp_task = {title: title1.value, type: checked, description: description1.value};
     // Ajoutez object au Array
-        tasks.push(temp_task);
+
     // refresh tasks
     
 }

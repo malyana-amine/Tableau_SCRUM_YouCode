@@ -42,6 +42,7 @@ function saveTask() {
         console.log(tasks);
     // refresh tasks
        // tasks.reload();
+       reloadTasks();
     
 }
 
@@ -91,16 +92,41 @@ function initTaskForm() {
 function reloadTasks() {
     // Remove tasks elements
 
-    // Set Task count
-}
 
-var tasks = [
-    {
-        'title'         :   'Keep all the updated requirements in one place',
-        'type'          :   'Feature',
-        'priority'      :   'High',
-        'status'        :   'To Do',
-        'date'          :   '2022-10-08',
-        'description'   :   `There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.`,
-    },
-];
+    let todo = document.getElementById("to-do-tasks");
+    let progress = document.getElementById("in-progress-tasks");
+    let done = document.getElementById("done-tasks");
+
+    todo.innerHTML="";
+    progress.innerHTML="";
+    done.innerHTML="";
+    // Set Task count
+
+    for(let i=0 ; i< tasks.length ;i++){
+            if(tasks[i].status=='To Do'){
+                    let todo1 = document.getElementById("to-do-task") 
+
+                    let button1 = `
+                                    <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1">
+								<div class="">
+									<i class="mr-3 fw-bold"><i class="fa-sharp fa-solid fa-circle-check text-green fs-25px"></i></i> 
+								</div>
+								<div class="d-flex flex-column align-items-start">
+									<div class="fw-bolder text-start">${tasks[i].title}</div>
+									<div class="text-start">
+										<div class="text-muted">#${i} created in ${tasks[i].date}</div>
+										<div class="" title="">${tasks[i].description}</div>
+									</div>
+									<div class="mt-2 text-start">
+										<span class="py-1 px-2 bg-primary rounded-pill mx-1 fw-bold">${tasks[i].priority}</span>
+										<span class="py-1 px-2 bg-muted rounded-pill fw-bold">${tasks[i].type}</span>
+									</div>
+								</div>
+							</button>
+                            `;
+                            todo1.innerHTML+=button1;
+            }
+    }
+
+
+}
