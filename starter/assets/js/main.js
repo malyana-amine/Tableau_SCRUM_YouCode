@@ -104,7 +104,6 @@ function reloadTasks() {
 
     for(let i=0 ; i< tasks.length ;i++){
             if(tasks[i].status=='To Do'){
-                    let todo1 = document.getElementById("to-do-task") 
 
                     let button1 = `
                                     <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1">
@@ -115,7 +114,7 @@ function reloadTasks() {
 									<div class="fw-bolder text-start">${tasks[i].title}</div>
 									<div class="text-start">
 										<div class="text-muted">#${i} created in ${tasks[i].date}</div>
-										<div class="" title="">${tasks[i].description}</div>
+										<div class="" title="${tasks[i].description}">${tasks[i].description.substring(0,60)}...</div>
 									</div>
 									<div class="mt-2 text-start">
 										<span class="py-1 px-2 bg-primary rounded-pill mx-1 fw-bold">${tasks[i].priority}</span>
@@ -124,8 +123,55 @@ function reloadTasks() {
 								</div>
 							</button>
                             `;
-                            todo1.innerHTML+=button1;
+                            todo.innerHTML+=button1;
             }
+            else if(tasks[i].status=='In Progress'){
+
+                let button1 = `
+                                <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1">
+                            <div class="">
+                                <i class="mr-3 fw-bold"><i class="fa-sharp fa-solid fa-circle-check text-green fs-25px"></i></i> 
+                            </div>
+                            <div class="d-flex flex-column align-items-start">
+                                <div class="fw-bolder text-start">${tasks[i].title}</div>
+                                <div class="text-start">
+                                    <div class="text-muted">#${i} created in ${tasks[i].date}</div>
+                                    <div class="" title="${tasks[i].description}">${tasks[i].description.substring(0,60)}...</div>
+                                </div>
+                                <div class="mt-2 text-start">
+                                    <span class="py-1 px-2 bg-primary rounded-pill mx-1 fw-bold">${tasks[i].priority}</span>
+                                    <span class="py-1 px-2 bg-muted rounded-pill fw-bold">${tasks[i].type}</span>
+                                </div>
+                            </div>
+                        </button>
+                        `;
+                        progress.innerHTML+=button1;
+        }
+        else if(tasks[i].status=='Done'){
+
+            let button1 = `
+                            <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1">
+                        <div class="">
+                            <i class="mr-3 fw-bold"><i class="fa-sharp fa-solid fa-circle-check text-green fs-25px"></i></i> 
+                        </div>
+                        <div class="d-flex flex-column align-items-start">
+                            <div class="fw-bolder text-start">${tasks[i].title}</div>
+                            <div class="text-start">
+                                <div class="text-muted">#${i} created in ${tasks[i].date}</div>
+                                <div class="" title="${tasks[i].description}">${tasks[i].description.substring(0,60)}...</div>
+                            </div>
+                            <div class="mt-2 text-start">
+                                <span class="py-1 px-2 bg-primary rounded-pill mx-1 fw-bold">${tasks[i].priority}</span>
+                                <span class="py-1 px-2 bg-muted rounded-pill fw-bold">${tasks[i].type}</span>
+                            </div>
+                        </div>
+                    </button>
+                    `;
+                    done.innerHTML+=button1;
+    }
+    else{
+        console.log("error")
+    }
     }
 
 
