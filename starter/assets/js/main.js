@@ -2,6 +2,7 @@
  * In this file app.js you will find all CRUD functions name.
  * 
  */
+ let x=18;
 
  function createTask() {
     // initialiser task form
@@ -35,14 +36,17 @@ function saveTask() {
 
    
 
-   const temp_task = {title : title.value,type : checked, priority : p_value, status : s_value, date : date.value , description : description.value};
+   const temp_task = {title : title.value,type : checked, priority : p_value, status : s_value, date : date.value , description : description.value ,taskid:x };
     // Ajoutez object au Array 
         tasks.push(temp_task);
        
         console.log(tasks);
+        x++;
     // refresh tasks
        // tasks.reload();
        reloadTasks();
+
+    
     
 }
 
@@ -60,8 +64,30 @@ function editTask(index) {
     // Ouvrir Modal form
 }
 
-function updateTask() {
+function updateTask(id) {
     // GET TASK ATTRIBUTES FROM INPUTS
+
+    let type_bug1 = document.getElementById("bug1");
+    let type_feature1 = document.getElementById("feature1");
+
+    
+    
+
+    for(let j=0 ; j< tasks.length ;j++){
+        if(tasks[j].taskid==id){
+            if(tasks[j].type == "Bug"){
+                type_bug1.checked=true;
+                
+            }
+            else if(tasks[j].type == "Feature"){
+                type_feature1.checked=true;
+            }
+            title2.value = tasks[j].title;
+            form_options_priority1.value = tasks[j].priority;
+            form_options_status1.value = tasks[j].status;
+            date1.value = tasks[j].date;
+            description3.value = tasks[j].description;
+        }}
 
     // Créez task object
 
@@ -106,14 +132,14 @@ function reloadTasks() {
             if(tasks[i].status=='To Do'){
 
                     let button1 = `
-                                    <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1">
+                                    <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1"  onclick="updateTask(${tasks[i].taskid})" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
 								<div class="">
-									<i class="mr-3 fw-bold"><i class="fa-sharp fa-solid fa-circle-check text-green fs-25px"></i></i> 
+                                <i class="mr-3 fw-bold"><i class="fa-regular fa-circle-question text-red fs-25px"></i></i>  
 								</div>
 								<div class="d-flex flex-column align-items-start">
 									<div class="fw-bolder text-start">${tasks[i].title}</div>
 									<div class="text-start">
-										<div class="text-muted">#${i} created in ${tasks[i].date}</div>
+										<div class="text-muted">#${i+1} created in ${tasks[i].date}</div>
 										<div class="" title="${tasks[i].description}">${tasks[i].description.substring(0,60)}...</div>
 									</div>
 									<div class="mt-2 text-start">
@@ -128,14 +154,14 @@ function reloadTasks() {
             else if(tasks[i].status=='In Progress'){
 
                 let button1 = `
-                                <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1">
+                                <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" id="${tasks[i].taskid}" onclick="updateTask(${tasks[i].taskid})" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
                             <div class="">
-                                <i class="mr-3 fw-bold"><i class="fa-sharp fa-solid fa-circle-check text-green fs-25px"></i></i> 
+                            <i class="mr-3 fw-bold"><i class="fa-solid fa-spinner text-orange fs-25px"></i></i>  
                             </div>
                             <div class="d-flex flex-column align-items-start">
                                 <div class="fw-bolder text-start">${tasks[i].title}</div>
                                 <div class="text-start">
-                                    <div class="text-muted">#${i} created in ${tasks[i].date}</div>
+                                    <div class="text-muted">#${i+1} created in ${tasks[i].date}</div>
                                     <div class="" title="${tasks[i].description}">${tasks[i].description.substring(0,60)}...</div>
                                 </div>
                                 <div class="mt-2 text-start">
@@ -150,14 +176,14 @@ function reloadTasks() {
         else if(tasks[i].status=='Done'){
 
             let button1 = `
-                            <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1">
+                            <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" id="${tasks[i].taskid}" onclick="updateTask(${tasks[i].taskid})" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
                         <div class="">
                             <i class="mr-3 fw-bold"><i class="fa-sharp fa-solid fa-circle-check text-green fs-25px"></i></i> 
                         </div>
                         <div class="d-flex flex-column align-items-start">
                             <div class="fw-bolder text-start">${tasks[i].title}</div>
                             <div class="text-start">
-                                <div class="text-muted">#${i} created in ${tasks[i].date}</div>
+                                <div class="text-muted">#${i+1} created in ${tasks[i].date}</div>
                                 <div class="" title="${tasks[i].description}">${tasks[i].description.substring(0,60)}...</div>
                             </div>
                             <div class="mt-2 text-start">
