@@ -3,6 +3,7 @@
  * 
  */
  let x=18;
+ let tempid;
 
  function createTask() {
     // initialiser task form
@@ -50,8 +51,29 @@ function saveTask() {
     
 }
 
-function editTask(index) {
+function editTask() {
+
+
+    let type_bug1 = document.getElementById("bug1");
+    let type_feature1 = document.getElementById("feature1");
+
     // Initialisez task form
+    for(let j=0 ; j< tasks.length ;j++){
+        if(tasks[j].taskid==tempid){
+        if( type_bug1.checked==true ){
+            tasks[j].type = "Bug";
+            
+        }
+        else if( type_feature1.checked==true  ){
+            tasks[j].type = "Feature";
+        }
+        tasks[j].title = title2.value;
+        tasks[j].priority = form_options_priority1.value;
+        tasks[j].status = form_options_status1.value;
+        tasks[j].date = date1.value;
+        tasks[j].description = description3.value;
+        console.log(tasks);
+        reloadTasks();
 
     // Affichez updates
 
@@ -62,7 +84,7 @@ function editTask(index) {
     // Definir FORM INPUTS
 
     // Ouvrir Modal form
-}
+}}}
 
 function updateTask(id) {
     // GET TASK ATTRIBUTES FROM INPUTS
@@ -70,12 +92,11 @@ function updateTask(id) {
     let type_bug1 = document.getElementById("bug1");
     let type_feature1 = document.getElementById("feature1");
 
-    
-    
+
 
     for(let j=0 ; j< tasks.length ;j++){
         if(tasks[j].taskid==id){
-            if(tasks[j].type == "Bug"){
+            if(tasks[j].type =="Bug"){
                 type_bug1.checked=true;
                 
             }
@@ -87,6 +108,7 @@ function updateTask(id) {
             form_options_status1.value = tasks[j].status;
             date1.value = tasks[j].date;
             description3.value = tasks[j].description;
+            tempid=id;
         }}
 
     // Créez task object
@@ -101,13 +123,20 @@ function updateTask(id) {
 
 function deleteTask() {
     // Get index of task in the array
+    for(let j=0 ; j< tasks.length ;j++){
+        if(tasks[j].taskid==tempid){
 
-    // Remove task from array by index splice function
+            tasks.splice(j,1);
+            console.log(tasks);
+    // Remove task from array by index 
 
     // close modal form
 
     // refresh tasks
-}
+    reloadTasks();
+
+}}}
+
 
 function initTaskForm() {
     // Clear task form from data
