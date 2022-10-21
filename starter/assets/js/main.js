@@ -4,6 +4,7 @@
  */
  let x=18;
  let tempid;
+ reloadTasks() ;
 
  function createTask() {
     // initialiser task form
@@ -161,7 +162,7 @@ function reloadTasks() {
     for(let i=0 ; i< tasks.length ;i++){
             if(tasks[i].status=='To Do'){
 
-                    let button1 = `
+                todo.innerHTML+= `
                                     <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1"  onclick="updateTask(${tasks[i].taskid})" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
 								<div class="">
                                 <i class="mr-3 fw-bold"><i class="fa-regular fa-circle-question text-red fs-25px"></i></i>  
@@ -169,7 +170,7 @@ function reloadTasks() {
 								<div class="d-flex flex-column align-items-start">
 									<div class="fw-bolder text-start">${tasks[i].title}</div>
 									<div class="text-start">
-										<div class="text-muted">#${i+1} created in ${tasks[i].date}</div>
+										<div class="text-muted">#${tasks[i].taskid} created in ${tasks[i].date}</div>
 										<div class="" title="${tasks[i].description}">${tasks[i].description.substring(0,60)}...</div>
 									</div>
 									<div class="mt-2 text-start">
@@ -179,7 +180,7 @@ function reloadTasks() {
 								</div>
 							</button>
                             `;
-                            todo.innerHTML+=button1;
+                            // todo.innerHTML+=button1;
             }
             else if(tasks[i].status=='In Progress'){
 
@@ -191,7 +192,7 @@ function reloadTasks() {
                             <div class="d-flex flex-column align-items-start">
                                 <div class="fw-bolder text-start">${tasks[i].title}</div>
                                 <div class="text-start">
-                                    <div class="text-muted">#${i+1} created in ${tasks[i].date}</div>
+                                    <div class="text-muted">#${tasks[i].taskid} created in ${tasks[i].date}</div>
                                     <div class="" title="${tasks[i].description}">${tasks[i].description.substring(0,60)}...</div>
                                 </div>
                                 <div class="mt-2 text-start">
@@ -213,7 +214,7 @@ function reloadTasks() {
                         <div class="d-flex flex-column align-items-start">
                             <div class="fw-bolder text-start">${tasks[i].title}</div>
                             <div class="text-start">
-                                <div class="text-muted">#${i+1} created in ${tasks[i].date}</div>
+                                <div class="text-muted">#${tasks[i].taskid} created in ${tasks[i].date}</div>
                                 <div class="" title="${tasks[i].description}">${tasks[i].description.substring(0,60)}...</div>
                             </div>
                             <div class="mt-2 text-start">
