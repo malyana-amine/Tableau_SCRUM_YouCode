@@ -122,6 +122,7 @@ function updateTask(id) {
 }
 
 function deleteTask() {
+    
     // Get index of task in the array
     for(let j=0 ; j< tasks.length ;j++){
         if(tasks[j].taskid==tempid){
@@ -228,6 +229,4 @@ function reloadTasks() {
         console.log("error")
     }
     }
-
-
 }
