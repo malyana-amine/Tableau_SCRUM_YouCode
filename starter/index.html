@@ -51,7 +51,7 @@
 						</div>
 						<div class="p-1 d-flex bg-secondary flex-column gap-1" id="to-do-tasks">
 							<!-- TO DO TASKS HERE -->
-							<button class="w-100 py-2 d-flex align-items-center gap-4 px-3 rounded border-1">
+							<!-- <button class="w-100 py-2 d-flex align-items-center gap-4 px-3 rounded border-1">
 								<div class="">
 									<i class="mr-3 fw-bold"><i class="fa-regular fa-circle-question text-red fs-25px"></i></i> 
 								</div>
@@ -66,7 +66,7 @@
 										<span class="py-1 px-2 bg-muted rounded-pill mx-1 fw-bold">Feature</span>
 									</div>
 								</div>
-							</button>
+							</button> -->
 
 							<!-- <button class="w-100 py-2 d-flex align-items-center gap-4 px-3 rounded border-1">
 								<div class="">
@@ -150,7 +150,7 @@
 						</div>
 						<div class="p-1 d-flex bg-secondary flex-column gap-1" id="in-progress-tasks">
 							<!-- IN PROGRESS TASKS HERE -->
-							<button class="w-100 py-2 d-flex align-items-center gap-4 px-3 rounded border-1">
+							<!-- <button class="w-100 py-2 d-flex align-items-center gap-4 px-3 rounded border-1">
 								<div class="">
 									<i class="mr-3 fw-bold"><i class="fa-solid fa-spinner text-orange fs-25px"></i></i> 
 								</div>
@@ -165,7 +165,7 @@
 										<span class="py-1 px-2 bg-muted rounded-pill fw-bold">Bug</span>
 									</div>
 								</div>
-							</button>
+							</button> -->
 
 							<!-- <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1">
 								<div class="">
@@ -280,7 +280,8 @@
 									</div>
 								</div>
 							</button> -->
-							<button  class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1">
+
+							<!-- <button  class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1">
 								<div class="">
 									<i class="mr-3 fw-bold"><i class="fa-sharp fa-solid fa-circle-check text-green fs-25px "></i></i> 
 								</div>
@@ -295,7 +296,7 @@
 										<span class="py-1 px-2 bg-muted rounded-pill fw-bold">Bug</span>
 									</div>
 								</div>
-							</button>
+							</button> -->
 						</div>
 					</div>
 				</div>
@@ -324,6 +325,7 @@
 			<div class="mb-3">
 				<label  class="form-label">Title</label>
 				<input type="text" class="form-control" id="title1" placeholder="Enter card title">
+				<p id="title_error"> </p>
 			  </div>
 
 
@@ -340,6 +342,7 @@
 					  <label class="form-check-label" for="flexRadioDefault2">
 						Bug
 					  </label>
+					  <p class="type_error"> </p>
 					</div>
 
 
@@ -347,10 +350,12 @@
 					<div class="col-md-4 w-100 mb-4">
 						<label for="inputState" class="form-label">Priority</label>
 						<select id="form_options_priority" class="form-select " required >
-						<option selected value="High">High</option>
+						<option value=""disabled hidden selected>open this menu select</option>
+						<option value="High">High</option>
 						<option value="medium">medium</option>
 						<option value="Low">Low</option>
 						</select>
+						<p class="per_error"> </p>
 					</div>
 
 
@@ -358,21 +363,25 @@
 					<div class="col-md-4 w-100 mb-4">
 						<label for="inputState" class="form-label">status</label>
 						<select id="form_options_status" class="form-select " required >
-						<option selected value="To Do">To Do</option>
+						<option value=""disabled hidden selected>open this menu select</option>
+						<option value="To Do">To Do</option>
 						<option value="In Progress">In Progress</option>
 						<option value="Done">Done</option>
 						</select>
+						<p class="status_error"> </p>
 					</div>
 
 
 				  <div class="md-form md-outline input-with-post-icon datepicker mb-3">
 					  <label for="inputState" class="form-label">Date</label>
 					  <input placeholder="Select date" type="date"  class="form-control" id="date">
+					  <p class="date_error"> </p>
 				  </div>
 
 				  <div class="form-group">
 					  <label for="exampleFormControlTextarea1" id="description1">Description</label>
 					  <textarea class="form-control" rows="3" id="description"></textarea>
+					  <p class="description_error"> </p>
 				  </div>
 
 				  
@@ -468,6 +477,7 @@
 	<script src="assets/js/app.min.js"></script>
 	<script src="assets/js/data.js"></script>
 	<script src="assets/js/main.js"></script>
+
 	<!-- ================== END core-js ================== -->
 </body>
 </html>
