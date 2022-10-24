@@ -182,8 +182,7 @@ function reloadTasks() {
             let doneCount=0;
     for(let i=0 ; i< tasks.length ;i++){
             if(tasks[i].status=='To Do'){
-                todoCount++;
-                tdindex.innerText=todoCount;
+                
 
                 todo.innerHTML+= `
                                     <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1"  onclick="updateTask(${tasks[i].taskid})" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
@@ -204,10 +203,13 @@ function reloadTasks() {
 							</button>
                             `;
                             // todo.innerHTML+=button1;
+
+                            ++todoCount;
+                
             }
             else if(tasks[i].status=='In Progress'){
                 ipCount++;
-                ipindex.innerText=ipCount;
+                
 
                 let button1 = `
                                 <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" id="${tasks[i].taskid}" onclick="updateTask(${tasks[i].taskid})" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
@@ -232,7 +234,7 @@ function reloadTasks() {
         else if(tasks[i].status=='Done'){
 
             doneCount++;
-            dnindex.innerText=doneCount;
+            
             
 
             let button1 = `
@@ -259,6 +261,9 @@ function reloadTasks() {
         console.log("error")
     }
     }
+    tdindex.innerText=todoCount;
+    dnindex.innerText=doneCount;
+    ipindex.innerText=ipCount;
 }
 
 
