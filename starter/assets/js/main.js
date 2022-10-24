@@ -5,22 +5,6 @@
  let x=18;
  let tempid;
  reloadTasks() ;
- 
- 
- let save = document.getElementById("save1");
- let title_error = document.getElementById("title_error");
- save.disabled=true;
- //=====================
- save.addEventListener("keyup",function(){
-     if ( title.value !=" "){
-         save.disabled=false;
-     }else{
-         title_error.innerHTML = "hcdjhdbc";
-         save.disabled= true;
-         console.log("error tittle")
-     }
-
- })
 
 
 
@@ -70,6 +54,14 @@ function saveTask() {
     // refresh tasks
        // tasks.reload();
        reloadTasks();
+
+       title.value="";
+       type_bug.checked=false;
+       type_feature.checked=false;
+       date.value="";
+       priority.selectedIndex="0";
+       status.selectedIndex="0";
+       description.value="";
 
     
     
@@ -269,33 +261,6 @@ function reloadTasks() {
     }
 }
 
-function validate() {
-
-    let title = document.getElementById("title1");
-    let type_bug = document.getElementById("bug");
-    let type_feature = document.getElementById("feature");
-    let priority = document.getElementById("form_options_priority");
-    let p_value = priority.options[priority.selectedIndex].text;
-    let status = document.getElementById("form_options_status");
-    let s_value = status.options[status.selectedIndex].text;
-    let date = document.getElementById("date");
-    let description = document.getElementById("description");
-    let save = document.getElementById("save1");
-    let title_error = document.querySelector(".title_error");
-
-    save.disablad=true;
-
-    save.addEventListener("click", function(){
-        validate_title();
-    })
-
-}
-    function validate_title() {
-
-        
-
-
-    }
 
 
 
