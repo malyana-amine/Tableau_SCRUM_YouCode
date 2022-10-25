@@ -6,11 +6,6 @@
  let tempid;
  reloadTasks() ;
 
-
-
-
-
-
  function createTask() {
     // initialiser task form
 
