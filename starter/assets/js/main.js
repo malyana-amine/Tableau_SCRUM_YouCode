@@ -7,11 +7,7 @@
  reloadTasks() ;
 
  function createTask() {
-    // initialiser task form
 
-    // Afficher le boutton save
-
-    // Ouvrir modal form
     
 }
 
@@ -122,14 +118,6 @@ function updateTask(id) {
             tempid=id;
         }}
 
-    // Créez task object
-
-    // Remplacer ancienne task par nouvelle task
-
-    // Fermer Modal form
-
-    // Refresh tasks
-    
 }
 
 function deleteTask() {
@@ -260,10 +248,5 @@ function reloadTasks() {
     dnindex.innerText=doneCount;
     ipindex.innerText=ipCount;
 }
-
-
-
-
-
 
 
