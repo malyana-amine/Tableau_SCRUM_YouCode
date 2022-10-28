@@ -20,10 +20,11 @@
 	<!-- ================== END core-css ================== -->
 </head>
 <body>
-	<?php
-	getTasks();
-	?>
+<?php
+// getTasks();
+// global 
 
+?>
 
 	<!-- BEGIN #app -->
 	<div id="app" class="app-without-sidebar">
@@ -60,9 +61,36 @@
 						</div>
 						<div class="p-1 d-flex bg-secondary flex-column gap-1" id="to-do-tasks">
 							<!-- TO DO TASKS HERE -->
-							
+
+
+
+
 							<?php
-							getTasks();
+								foreach(array_values($GLOBALS['result']) as $row ){
+
+									if ( $row['status'] === 'To Do' ){
+										var_dump ($row['status']);
+
+
+
+				    echo ' <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+								<div class="">
+                                <i class="mr-3 fw-bold"><i class="fa-regular fa-circle-question text-red fs-25px"></i></i>  
+								</div>
+								<div class="d-flex flex-column align-items-start">
+									<div class="fw-bolder text-start">'.$row['title'].'</div>
+									<div class="text-start">
+										<div class="text-muted">#1 created in '.$row['task_datetime'].'</div>
+										<div class="" title="">'.$row['description'].'..</div>
+									</div>
+									<div class="mt-2 text-start">
+										<span class="py-1 px-2 bg-primary rounded-pill mx-1 fw-bold">'.$row['periority'].'</span>
+										<span class="py-1 px-2 bg-muted rounded-pill fw-bold">'.$row['type'].'</span>
+									</div>
+								</div>
+							</button> ';
+								}
+							}
 							?>
 
 						
@@ -77,6 +105,31 @@
 						</div>
 						<div class="p-1 d-flex bg-secondary flex-column gap-1" id="in-progress-tasks">
 							<!-- IN PROGRESS TASKS HERE -->
+							<?php
+								foreach(array_values($GLOBALS['result']) as $row ){
+
+									if ( $row['status'] === 'In progress' ){
+										var_dump ($row['status']);
+
+								echo ' <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+											<div class="">
+											<i class="mr-3 fw-bold"><i class="fa-regular fa-circle-question text-red fs-25px"></i></i>  
+											</div>
+											<div class="d-flex flex-column align-items-start">
+												<div class="fw-bolder text-start">'.$row['title'].'</div>
+												<div class="text-start">
+													<div class="text-muted">#1 created in '.$row['task_datetime'].'</div>
+													<div class="" title="">'.$row['description'].'..</div>
+												</div>
+												<div class="mt-2 text-start">
+													<span class="py-1 px-2 bg-primary rounded-pill mx-1 fw-bold">'.$row['periority'].'</span>
+													<span class="py-1 px-2 bg-muted rounded-pill fw-bold">'.$row['type'].'</span>
+												</div>
+											</div>
+										</button> ';
+								}
+							}
+							?>
 							
 
 						</div>
@@ -91,7 +144,33 @@
 						<div class="p-1 bg-secondary d-flex flex-column gap-1" id="done-tasks">
 							<!-- DONE TASKS HERE -->
 
-							
+							<?php
+								foreach(array_values($GLOBALS['result']) as $row ){
+
+									if ( $row['status'] === 'Done' ){
+										var_dump ($row['status']);
+
+
+
+				    echo ' <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+								<div class="">
+                                <i class="mr-3 fw-bold"><i class="fa-regular fa-circle-question text-red fs-25px"></i></i>  
+								</div>
+								<div class="d-flex flex-column align-items-start">
+									<div class="fw-bolder text-start">'.$row['title'].'</div>
+									<div class="text-start">
+										<div class="text-muted">#1 created in '.$row['task_datetime'].'</div>
+										<div class="" title="">'.$row['description'].'..</div>
+									</div>
+									<div class="mt-2 text-start">
+										<span class="py-1 px-2 bg-primary rounded-pill mx-1 fw-bold">'.$row['periority'].'</span>
+										<span class="py-1 px-2 bg-muted rounded-pill fw-bold">'.$row['type'].'</span>
+									</div>
+								</div>
+							</button> ';
+								}
+							}
+							?>
 							
 							
 
