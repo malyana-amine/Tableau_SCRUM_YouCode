@@ -21,8 +21,6 @@
 </head>
 <body>
 <?php
-// getTasks();
-// global 
 
 ?>
 
@@ -192,7 +190,9 @@
 	<!-- TASK MODAL -->
   
   <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+  
+  <form method="POST" action="index.php" class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog">
 	  <div class="modal-content">
 		<div class="modal-header bg-dark">
@@ -202,7 +202,7 @@
 		<div class="modal-body">
 			<div class="mb-3">
 				<label  class="form-label">Title</label>
-				<input type="text" class="form-control" id="title1" placeholder="Enter card title">
+				<input name="title" type="text" class="form-control" id="title1" placeholder="Enter card title">
 				<p id="title_error"> </p>
 			  </div>
 
@@ -227,7 +227,7 @@
 
 					<div class="col-md-4 w-100 mb-4">
 						<label for="inputState" class="form-label">Priority</label>
-						<select id="form_options_priority" class="form-select " required >
+						<select name="priority" id="form_options_priority" class="form-select " required >
 						<option value=""disabled hidden selected>open this menu select</option>
 						<option value="High">High</option>
 						<option value="medium">medium</option>
@@ -240,7 +240,7 @@
 
 					<div class="col-md-4 w-100 mb-4">
 						<label for="inputState" class="form-label">status</label>
-						<select id="form_options_status" class="form-select " required >
+						<select name="status" id="form_options_status" class="form-select " required >
 						<option value=""disabled hidden selected>open this menu select</option>
 						<option value="To Do">To Do</option>
 						<option value="In Progress">In Progress</option>
@@ -252,13 +252,13 @@
 
 				  <div class="md-form md-outline input-with-post-icon datepicker mb-3">
 					  <label for="inputState" class="form-label">Date</label>
-					  <input placeholder="Select date" type="date"  class="form-control" id="date">
+					  <input name="date" placeholder="Select date" type="date"  class="form-control" id="date">
 					  <p class="date_error"> </p>
 				  </div>
 
 				  <div class="form-group">
 					  <label for="exampleFormControlTextarea1" id="description1">Description</label>
-					  <textarea class="form-control" rows="3" id="description"></textarea>
+					  <textarea name="description" class="form-control" rows="3" id="description"></textarea>
 					  <p class="description_error"> </p>
 				  </div>
 
@@ -267,13 +267,33 @@
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-muted rounded-pill text-black" data-bs-dismiss="modal">Cancel</button>
-		  <button type="button" class="btn btn-primary rounded-pill text-black" id="save1" data-bs-dismiss="modal" onclick="saveTask()">Save</button>
+		  <button type="submit" name="submit" class="btn btn-primary rounded-pill text-black" id="save1" data-bs-dismiss="modal" onclick="saveTask()">Save</button>
 		</div>
 	  </div>
 	</div>
-  </div>
+	</form>
 
+<?php
+	if( isset($_POST['submit'])) {
+           
+		   // --------------
+		   $title = $_POST['title'];
+		   $type = $_POST['type'];
+		   $priority = $_POST['priority'];
+		   $status = $_POST['status'];
+		   $date = $_POST['date'];
+		   $description = $_POST['description'];
 
+   
+		  
+	   
+		   $sql = " INSERT INTO tasks (`title`, `type_id`, `priority_id`, `status_id`, `task_datetime`, `description`) VALUES ('$title', '', '$priority', '$status', '$date','$description')"; 
+
+		   mysqli_query($conn,$sql);
+		//    header('location: index.php'); 
+		}
+
+?>
 		<!-- Modal content goes here -->
 
 		<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
