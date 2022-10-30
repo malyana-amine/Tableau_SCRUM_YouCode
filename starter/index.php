@@ -21,6 +21,9 @@
 </head>
 <body>
 <?php
+global $conn ;
+saveTask();
+			
 
 ?>
 
@@ -67,11 +70,11 @@
 								foreach(array_values($GLOBALS['result']) as $row ){
 
 									if ( $row['status'] === 'To Do' ){
-										var_dump ($row['status']);
+										
 
 
 
-				    echo ' <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+				    echo ' <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#update'.$row["id"].'">
 								<div class="">
                                 <i class="mr-3 fw-bold"><i class="fa-regular fa-circle-question text-red fs-25px"></i></i>  
 								</div>
@@ -86,10 +89,97 @@
 										<span class="py-1 px-2 bg-muted rounded-pill fw-bold">'.$row['type'].'</span>
 									</div>
 								</div>
-							</button> ';
-								}
-							}
-							?>
+							</button>';?>
+
+							
+
+							<div class="modal fade" id="update<?php echo $row["id"] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+				<div class="modal-header bg-dark">
+				  <h5 class="modal-title p-1 text-white" id="staticBackdropLabel">Modifier task</h5>
+				  <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="mb-3">
+						<label  class="form-label">Title</label>
+						<input type="text" value="<?php echo $row["title"] ?>" class="form-control" id="title2" placeholder="Enter card title">
+					  </div>
+		
+		
+					 
+					  <div class="mb-3">
+					  
+					  
+						  <label  class="form-label">type</label>
+						  
+						  <div class="form-check">
+							
+						  
+
+							  <input type="radio" class="form-check-input" value="Feature"  <?php  if($row["type"] == "feature") echo 'checked'?>>
+							  <label class="form-check-label" for="flexRadioDefault1">
+								Feature
+							  </label>
+							</div>
+							<div class="form-check pb-3">
+							  <input class="form-check-input" type="radio" id="flexRadioDefault2"  value="Bug" <?php  if($row["type"] == "bug") echo 'checked' ?>>
+							  <label class="form-check-label" for="flexRadioDefault2">
+								Bug
+							  </label>
+							</div>
+		
+		
+		
+							<div class="col-md-4 w-100 mb-4">
+								<label for="inputState" class="form-label">Priority</label>
+								<select id="form_options_priority1" class="form-select " required >
+								<option selected value="High">High</option>
+								<option  value="High">High</option>
+								<option value="medium">medium</option>
+								<option value="Low">Low</option>
+								</select>
+							</div>
+		
+		
+		
+							<div class="col-md-4 w-100 mb-4">
+								<label for="inputState" class="form-label">status</label>
+								<select id="form_options_status1" class="form-select " required >
+								<option selected value="To Do">To Do</option>
+								<option value="In Progress">In Progress</option>
+								<option value="Done">Done</option>
+								</select>
+							</div>
+		
+		
+						  <div class="md-form md-outline input-with-post-icon datepicker mb-3">
+							  <label for="inputState" class="form-label" >Date</label>
+							  <input value ="<?php echo $row["task_datetime"] ?>" placeholder="Select date" type="date"  class="form-control" id="date1">
+						  </div>
+		
+						  <div class="form-group">
+							  <label for="exampleFormControlTextarea1" id="description2">Description</label>
+							  <textarea value="" class="form-control" rows="3" id="description3"><?php echo $row["description"] ?></textarea>
+						  </div>
+		
+						  
+						  </div>
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-muted rounded-pill text-black" data-bs-dismiss="modal">Cancel</button>
+				  <button type="button" class="btn btn-danger rounded-pill text-black" data-bs-dismiss="modal" id="save1" onclick="deleteTask()">delete</button>
+				  <button type="button" class="btn btn-warning rounded-pill text-black" data-bs-dismiss="modal" id="edit" onclick="editTask()">edit</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+
+
+								<?php }
+							
+							
+							} ?>
 
 						
 						</div>
@@ -107,11 +197,11 @@
 								foreach(array_values($GLOBALS['result']) as $row ){
 
 									if ( $row['status'] === 'In progress' ){
-										var_dump ($row['status']);
+										
 
 								echo ' <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
 											<div class="">
-											<i class="mr-3 fw-bold"><i class="fa-regular fa-circle-question text-red fs-25px"></i></i>  
+											<i class="mr-3 fw-bold"><i class="fa-solid fa-spinner text-orange fs-25px"></i></i>  
 											</div>
 											<div class="d-flex flex-column align-items-start">
 												<div class="fw-bolder text-start">'.$row['title'].'</div>
@@ -146,13 +236,13 @@
 								foreach(array_values($GLOBALS['result']) as $row ){
 
 									if ( $row['status'] === 'Done' ){
-										var_dump ($row['status']);
+										
 
 
 
 				    echo ' <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
 								<div class="">
-                                <i class="mr-3 fw-bold"><i class="fa-regular fa-circle-question text-red fs-25px"></i></i>  
+                                <i class="mr-3 fw-bold"><i class="fa-sharp fa-solid fa-circle-check text-green fs-25px"></i></i>
 								</div>
 								<div class="d-flex flex-column align-items-start">
 									<div class="fw-bolder text-start">'.$row['title'].'</div>
@@ -192,7 +282,7 @@
   <!-- Modal -->
 
   
-  <form method="POST" action="index.php" class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <form method="POST" class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog">
 	  <div class="modal-content">
 		<div class="modal-header bg-dark">
@@ -210,13 +300,13 @@
 			  <div class="mb-3">
 				  <label  class="form-label">type</label>
 				  <div class="form-check">
-					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="feature">
+					  <input class="form-check-input" type="radio" value="1" name="flexRadioDefault" id="feature">
 					  <label class="form-check-label" for="flexRadioDefault1">
 						Feature
 					  </label>
 					</div>
 					<div class="form-check pb-3">
-					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="bug" checked>
+					  <input class="form-check-input" type="radio" value="2" name="flexRadioDefault" id="bug" checked>
 					  <label class="form-check-label" for="flexRadioDefault2">
 						Bug
 					  </label>
@@ -229,9 +319,9 @@
 						<label for="inputState" class="form-label">Priority</label>
 						<select name="priority" id="form_options_priority" class="form-select " required >
 						<option value=""disabled hidden selected>open this menu select</option>
-						<option value="High">High</option>
-						<option value="medium">medium</option>
-						<option value="Low">Low</option>
+						<option value="1">High</option>
+						<option value="2">medium</option>
+						<option value="3">Low</option>
 						</select>
 						<p class="per_error"> </p>
 					</div>
@@ -242,9 +332,9 @@
 						<label for="inputState" class="form-label">status</label>
 						<select name="status" id="form_options_status" class="form-select " required >
 						<option value=""disabled hidden selected>open this menu select</option>
-						<option value="To Do">To Do</option>
-						<option value="In Progress">In Progress</option>
-						<option value="Done">Done</option>
+						<option value="1">To Do</option>
+						<option value="2">In Progress</option>
+						<option value="3">Done</option>
 						</select>
 						<p class="status_error"> </p>
 					</div>
@@ -274,29 +364,12 @@
 	</form>
 
 <?php
-	if( isset($_POST['submit'])) {
-           
-		   // --------------
-		   $title = $_POST['title'];
-		   $type = $_POST['type'];
-		   $priority = $_POST['priority'];
-		   $status = $_POST['status'];
-		   $date = $_POST['date'];
-		   $description = $_POST['description'];
 
-   
-		  
-	   
-		   $sql = " INSERT INTO tasks (`title`, `type_id`, `priority_id`, `status_id`, `task_datetime`, `description`) VALUES ('$title', '', '$priority', '$status', '$date','$description')"; 
-
-		   mysqli_query($conn,$sql);
-		//    header('location: index.php'); 
-		}
 
 ?>
 		<!-- Modal content goes here -->
 
-		<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<!-- <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			<div class="modal-dialog">
 			  <div class="modal-content">
 				<div class="modal-header bg-dark">
@@ -368,7 +441,7 @@
 				</div>
 			  </div>
 			</div>
-		  </div>
+		  </div> -->
 	
 	<!-- ================== BEGIN core-js ================== -->
 	<script src="assets/js/vendor.min.js"></script>

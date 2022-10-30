@@ -31,51 +31,37 @@
    
             return $GLOBALS['result'];
 
+         
+
     }
 
 
     function saveTask()
     {
         //CODE HERE
+        global $conn ;
 
         if( isset($_POST['submit'])) {
            
             // --------------
             $title = $_POST['title'];
-            $type = $_POST['type'];
+            $type = $_POST['flexRadioDefault'];
             $priority = $_POST['priority'];
             $status = $_POST['status'];
             $date = $_POST['date'];
             $description = $_POST['description'];
-
-    
-           
-        
-            $sql = " INSERT INTO `tasks` (`title`, `type_id`, `priority_id`, `status_id`, `task_datetime`, `description`) VALUES ('$title', '$type', '$priority', '$status', '$date','$description')"; 
-
+                      
+             $sql = " INSERT INTO `tasks` (`title`, `type_id`, `priority_id`, `status_id`, `task_datetime`, `description`) VALUES ('$title', $type, $priority, $status , '$date','$description')"; 
+ 
             mysqli_query($conn,$sql);
-            header('location: index.php'); }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            header('location: index.php');
+         }
 
 
 
         //SQL INSERT
-        $_SESSION['message'] = "Task has been added successfully !";
-		header('location: index.php');
+        // $_SESSION['message'] = "Task has been added successfully !";
+		// header('location: index.php');
     }
 
     function updateTask()
