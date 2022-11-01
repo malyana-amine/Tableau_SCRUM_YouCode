@@ -76,6 +76,9 @@
 
 
         if( isset($_POST['submit1'])){
+            // echo "<pre>" ;
+            //     var_dump($_POST) ;
+            // echo "<pre>" ;
         $title = $_POST['title1'];
         $type = $_POST['flexRadioDefault1'];
         $priority = $_POST['priority1'];
@@ -83,17 +86,18 @@
         $date = $_POST['date1'];
         $description = $_POST['description1'];
          
-
-        $id   =  $_POST['hid_input'];
-        die($type . $priority . $status . $title . $date . $description .$id) ;
+        $id   =  $_POST['hidinput'];
+        // echo $id ;
+        // die() ;
+       // die($type . $priority . $status . $title . $date . $description .$id) ;
         // die($_POST['hid_input']) ;
 
-        $sql1 = "UPDATE `tasks` SET`title`='$title',`type_id`='$type',`priority_id`='$priority',`status_id`='$status',`task_datetime`='$date',`description`='$description' WHERE `id`='$id'";
+        $sql1 = "UPDATE `tasks` 
+                SET`title`='$title',`type_id`='$type',`priority_id`='$priority',`status_id`='$status',`task_datetime`='$date',`description`='$description'
+                 WHERE `id`='$id'";
 
-        mysqli_query($conn,$sql1);
-        
-
-
+         
+            mysqli_query($conn,$sql1);
 
 
 

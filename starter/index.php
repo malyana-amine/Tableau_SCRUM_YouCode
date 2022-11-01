@@ -99,87 +99,7 @@ saveTask();
 
 							
 
-							<!-- <div class="modal fade" id="update<?php echo $row["id"] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			<div class="modal-dialog">
-			  <div class="modal-content">
-				<div class="modal-header bg-dark">
-				  <h5 class="modal-title p-1 text-white" id="staticBackdropLabel">Modifier task</h5>
-				  <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<div class="mb-3">
-						<label  class="form-label">Title</label>
-						<input type="text" value="<?php echo $row["title"] ?>" class="form-control" id="title2" placeholder="Enter card title">
-					  </div>
-		
-		
-					 
-					  <div class="mb-3">
-					  
-					  
-						  <label  class="form-label">type</label>
-						  
-						  <div class="form-check">
-							
-						  
-						  
-							  <input type="radio" class="form-check-input" name="type" value="Feature"  <?php  if($row["type"] == "feature") echo 'checked'?>>
-							  <label class="form-check-label" for="flexRadioDefault1">
-								Feature
-							  </label>
-							</div>
-							<div class="form-check pb-3">
-							  <input class="form-check-input" type="radio" id="flexRadioDefault2" name="type" value="Bug" <?php  if($row["type"] == "bug") echo 'checked' ?>>
-							  <label class="form-check-label" for="flexRadioDefault2">
-								Bug
-							  </label>
-							</div>
-		
-		
-		
-							<div class="col-md-4 w-100 mb-4">
-								<label for="inputState" class="form-label">Priority</label>
-								<select id="form_options_priority1" class="form-select " required >
-								<option selected value="High">High</option>
-								<option  value="High">High</option>
-								<option value="medium">medium</option>
-								<option value="Low">Low</option>
-								</select>
-							</div>
-		
-		
-		
-							<div class="col-md-4 w-100 mb-4">
-								<label for="inputState" class="form-label">status</label>
-								<select id="form_options_status1" class="form-select " required >
-								<option selected value="To Do">To Do</option>
-								<option value="In Progress">In Progress</option>
-								<option value="Done">Done</option>
-								</select>
-							</div>
-		
-		
-						  <div class="md-form md-outline input-with-post-icon datepicker mb-3">
-							  <label for="inputState" class="form-label" >Date</label>
-							  <input value ="<?php echo $row["task_datetime"] ?>" placeholder="Select date" type="date"  class="form-control" id="date1">
-						  </div>
-		
-						  <div class="form-group">
-							  <label for="exampleFormControlTextarea1" id="description2">Description</label>
-							  <textarea value="" class="form-control" rows="3" id="description3"><?php echo $row["description"] ?></textarea>
-						  </div>
-		
-						  
-						  </div>
-				</div>
-				<div class="modal-footer">
-				  <button type="button" class="btn btn-muted rounded-pill text-black" data-bs-dismiss="modal">Cancel</button>
-				  <button type="button" class="btn btn-danger rounded-pill text-black" data-bs-dismiss="modal" id="save1" onclick="deleteTask()">delete</button>
-				  <button type="button" class="btn btn-warning rounded-pill text-black" data-bs-dismiss="modal" id="edit" onclick="editTask()">edit</button>
-				</div>
-			  </div>
-			</div>
-		  </div> -->
+						
 
 
 								<?php }
@@ -207,7 +127,7 @@ saveTask();
 
 										echo ' <button onclick="update('.$row['id'].')"  id="" class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
 										<div class="">
-										<i class="mr-3 fw-bold"><i class="fa-regular fa-circle-question text-red fs-25px"></i></i>  
+										<i class="mr-3 fw-bold"><i class="fa-solid fa-spinner text-orange fs-25px"></i></i>  
 										</div>
 										<div class="d-flex flex-column align-items-start">
 											<div id="title'.$row['id'].'" class="fw-bolder text-start">'.$row['title'].'</div>
@@ -248,7 +168,7 @@ saveTask();
 
 										echo ' <button onclick="update('.$row['id'].')"  id="" class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
 										<div class="">
-										<i class="mr-3 fw-bold"><i class="fa-regular fa-circle-question text-red fs-25px"></i></i>  
+										<i class="mr-3 fw-bold"><i class="fa-sharp fa-solid fa-circle-check text-green fs-25px"></i></i>  
 										</div>
 										<div class="d-flex flex-column align-items-start">
 											<div id="title'.$row['id'].'" class="fw-bolder text-start">'.$row['title'].'</div>
@@ -397,12 +317,12 @@ document.getElementById(title2).value = btn_title;
 				  <h5 class="modal-title p-1 text-white" id="staticBackdropLabel">Modifier task</h5>
 				  <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
-				<input type="hidden" name="hid_input" class="hid" value="">
+				
 				<div class="modal-body">
 					<div class="mb-3">
 						<label  class="form-label">Title</label>
 						<input name="title1" type="text" class="form-control" id="title2" placeholder="Enter card title">
-						
+						<input type="hidden" name="hidinput" class="id"  id="hid" value="">
 					  </div>
 		
 		

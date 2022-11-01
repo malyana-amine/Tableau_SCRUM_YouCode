@@ -309,16 +309,19 @@ if (btn_status === "Done"){
     document.getElementById("form_options_status1").value = 3;
 }
 
+document.getElementById("hid").value = id ;
 
-let btn_id = document.getElementsByClassName("hid");
+console.log("hdidhidjidid");
+console.log("here "+document.getElementById("hid").value);
+// let btn_id = document.getElementsByClassName("hid");
 
-console.log(id);
+// console.log(id);
 // document.getElementById("form_options_priority1").value = btn_priority;
 // document.getElementById("form_options_status1").value = btn_status;
 document.getElementById("date1").value = btn_date;
 document.getElementById("description3").value = btn_description;
 
-btn_id.value = id;
-console.log(btn_id);
+// btn_id.value = id;
+// console.log(btn_id);
 
 }
