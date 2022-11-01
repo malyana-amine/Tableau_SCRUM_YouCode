@@ -121,5 +121,13 @@
         }
 
     }
+    function counter($contStatus){
+        global $conn;
+        $sql= "SELECT * FROM tasks where status_id= $contStatus";
+        $result = mysqli_query($conn,$sql);
+        $res=mysqli_fetch_all($result, MYSQLI_ASSOC);
+        echo count($res);
+
+    }
 
 ?>

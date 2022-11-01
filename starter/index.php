@@ -23,6 +23,7 @@
 <?php
 global $conn ;
 saveTask();	
+global $conteur ;
 ?>
 
 	<!-- BEGIN #app -->
@@ -55,7 +56,7 @@ saveTask();
 				<div class="col-md-4 col-12 mb-3">
 					<div class="border rounded bg-light p-0 overflow-hidden shadow">
 						<div class="bg-dark p-2">
-							<h4 class="text-white m-0">To do (<span id="to-do-tasks-count">5</span>)</h4>
+							<h4 class="text-white m-0">To do (<span id="to-do-tasks-count"> <?php echo counter(1) ?> </span>)</h4>
 
 						</div>
 						<div class="p-1 d-flex bg-secondary flex-column gap-1" id="to-do-tasks">
@@ -66,19 +67,12 @@ saveTask();
 
 							<?php
 								foreach(array_values($GLOBALS['result']) as $row ){
-									
-									
-									// var_dump( $row['periority']);
-									// var_dump( $row['status']);
 
 									if ( $row['status'] == 'To Do' ){
-										
-										
-										
-										
-										
 
+													
 
+									
 
 				    echo ' <button onclick="update('.$row['id'].')"  id="" class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
 								<div class="">
@@ -114,7 +108,7 @@ saveTask();
 				<div class="col-md-4 col-12 mb-3">
 					<div class="border rounded bg-light p-0 overflow-hidden shadow">
 						<div class="bg-dark p-2">
-							<h4 class="text-white m-0">In Progress (<span id="in-progress-tasks-count">4</span>)</h4>
+							<h4 class="text-white m-0">In Progress (<span id="in-progress-tasks-count"><?php echo counter(2) ?></span>)</h4>
 
 						</div>
 						<div class="p-1 d-flex bg-secondary flex-column gap-1" id="in-progress-tasks">
@@ -152,7 +146,7 @@ saveTask();
 				<div class="col-md-4 col-12 mb-3">
 					<div class="border rounded bg-light p-0 overflow-hidden shadow">
 						<div class="bg-dark p-2">
-							<h4 class="text-white m-0">Done (<span id="done-tasks-count">4</span>)</h4>
+							<h4 class="text-white m-0">Done (<span id="done-tasks-count"><?php echo counter(3) ?></span>)</h4>
 
 						</div>
 						<div class="p-1 bg-secondary d-flex flex-column gap-1" id="done-tasks">
@@ -174,7 +168,7 @@ saveTask();
 											<div id="title'.$row['id'].'" class="fw-bolder text-start">'.$row['title'].'</div>
 											<div class="text-start">
 												<div id="date'.$row['id'].'" data="'.$row['task_datetime'].'"  class="text-muted">#'.$row['id'].' created in '.$row['task_datetime'].'</div>
-												<div id="description'.$row['id'].'" class="" title="">'.$row['description'].'..</div>
+												<div id="description'.$row['id'].'" class="" title="'.$row['description'].'">'.$row['description'].'...</div>
 											</div>
 											<div class="mt-2 text-start">
 												<span data="'.$row['periority'].'" id="priority'.$row['id'].'" class="py-1 px-2 bg-primary rounded-pill mx-1 fw-bold">'.$row['periority'].'</span>
