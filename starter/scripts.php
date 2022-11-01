@@ -22,14 +22,19 @@
         global $result;
         //CODE HERE
 //         $conn = new mysqli('localhost', 'root', '', 'scrumboard');
-    $sql="SELECT t.id, t.title, p.name as periority, s.name as status, tp.name as type, t.task_datetime,t.description FROM `tasks` t INNER JOIN priorities p ON t.priority_id=p.id INNER JOIN statuses s ON s.id=t.status_id INNER JOIN types tp on tp.id=t.type_id";
+    $sql="SELECT t.id, t.title, p.name as periority, s.name as status, tp.name as type, t.task_datetime,t.description FROM `tasks` t 
+                    INNER JOIN priorities p ON t.priority_id=p.id 
+                    INNER JOIN statuses s ON t.status_id=s.id 
+                    INNER JOIN types tp on t.type_id=tp.id";
     $qry = mysqli_query($conn, $sql);
+    
     while($row = mysqli_fetch_assoc($qry)){
 
          $GLOBALS['result'][] = $row;
     }
    
             return $GLOBALS['result'];
+            var_dump ($GLOBALS['result']['t.priority_id']);
 
          
 

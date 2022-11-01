@@ -22,9 +22,7 @@
 <body>
 <?php
 global $conn ;
-saveTask();
-			
-
+saveTask();	
 ?>
 
 	<!-- BEGIN #app -->
@@ -45,7 +43,7 @@ saveTask();
 				</div>
 				
 				<div class="col-auto pt-30px ">
-					<button class="btn btn-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa fa-plus p-1 "></i> Add Task</button>
+					<button   class="btn btn-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa fa-plus p-1 "></i> Add Task</button>
 				</div>
 			</div>
 			<div class="row justify-content-center">
@@ -68,32 +66,40 @@ saveTask();
 
 							<?php
 								foreach(array_values($GLOBALS['result']) as $row ){
+									
+									
+									// var_dump( $row['periority']);
+									// var_dump( $row['status']);
 
-									if ( $row['status'] === 'To Do' ){
+									if ( $row['status'] == 'To Do' ){
+										
+										
+										
+										
 										
 
 
 
-				    echo ' <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#update'.$row["id"].'">
+				    echo ' <button onclick="update('.$row['id'].')"  id="" class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
 								<div class="">
                                 <i class="mr-3 fw-bold"><i class="fa-regular fa-circle-question text-red fs-25px"></i></i>  
 								</div>
 								<div class="d-flex flex-column align-items-start">
-									<div class="fw-bolder text-start">'.$row['title'].'</div>
+									<div id="title'.$row['id'].'" class="fw-bolder text-start">'.$row['title'].'</div>
 									<div class="text-start">
-										<div class="text-muted">#1 created in '.$row['task_datetime'].'</div>
-										<div class="" title="">'.$row['description'].'..</div>
+										<div id="date'.$row['id'].'" data="'.$row['task_datetime'].'"  class="text-muted">#1 created in '.$row['task_datetime'].'</div>
+										<div id="description'.$row['id'].'" class="" title="">'.$row['description'].'..</div>
 									</div>
 									<div class="mt-2 text-start">
-										<span class="py-1 px-2 bg-primary rounded-pill mx-1 fw-bold">'.$row['periority'].'</span>
-										<span class="py-1 px-2 bg-muted rounded-pill fw-bold">'.$row['type'].'</span>
+										<span data="'.$row['periority'].'" id="priority'.$row['id'].'" class="py-1 px-2 bg-primary rounded-pill mx-1 fw-bold">'.$row['periority'].'</span>
+										<span datastatus="'.$row['status'].'" data="'.$row['type'].'" id="type'.$row['id'].'" class="py-1 px-2 bg-muted rounded-pill fw-bold">'.$row['type'].'</span>
 									</div>
 								</div>
 							</button>';?>
 
 							
 
-							<div class="modal fade" id="update<?php echo $row["id"] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+							<!-- <div class="modal fade" id="update<?php echo $row["id"] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			<div class="modal-dialog">
 			  <div class="modal-content">
 				<div class="modal-header bg-dark">
@@ -116,14 +122,14 @@ saveTask();
 						  <div class="form-check">
 							
 						  
-
-							  <input type="radio" class="form-check-input" value="Feature"  <?php  if($row["type"] == "feature") echo 'checked'?>>
+						  
+							  <input type="radio" class="form-check-input" name="type" value="Feature"  <?php  if($row["type"] == "feature") echo 'checked'?>>
 							  <label class="form-check-label" for="flexRadioDefault1">
 								Feature
 							  </label>
 							</div>
 							<div class="form-check pb-3">
-							  <input class="form-check-input" type="radio" id="flexRadioDefault2"  value="Bug" <?php  if($row["type"] == "bug") echo 'checked' ?>>
+							  <input class="form-check-input" type="radio" id="flexRadioDefault2" name="type" value="Bug" <?php  if($row["type"] == "bug") echo 'checked' ?>>
 							  <label class="form-check-label" for="flexRadioDefault2">
 								Bug
 							  </label>
@@ -173,7 +179,7 @@ saveTask();
 				</div>
 			  </div>
 			</div>
-		  </div>
+		  </div> -->
 
 
 								<?php }
@@ -199,22 +205,22 @@ saveTask();
 									if ( $row['status'] === 'In progress' ){
 										
 
-								echo ' <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
-											<div class="">
-											<i class="mr-3 fw-bold"><i class="fa-solid fa-spinner text-orange fs-25px"></i></i>  
+										echo ' <button onclick="update('.$row['id'].')"  id="" class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+										<div class="">
+										<i class="mr-3 fw-bold"><i class="fa-regular fa-circle-question text-red fs-25px"></i></i>  
+										</div>
+										<div class="d-flex flex-column align-items-start">
+											<div id="title'.$row['id'].'" class="fw-bolder text-start">'.$row['title'].'</div>
+											<div class="text-start">
+												<div id="date'.$row['id'].'" data="'.$row['task_datetime'].'"  class="text-muted">#1 created in '.$row['task_datetime'].'</div>
+												<div id="description'.$row['id'].'" class="" title="">'.$row['description'].'..</div>
 											</div>
-											<div class="d-flex flex-column align-items-start">
-												<div class="fw-bolder text-start">'.$row['title'].'</div>
-												<div class="text-start">
-													<div class="text-muted">#1 created in '.$row['task_datetime'].'</div>
-													<div class="" title="">'.$row['description'].'..</div>
-												</div>
-												<div class="mt-2 text-start">
-													<span class="py-1 px-2 bg-primary rounded-pill mx-1 fw-bold">'.$row['periority'].'</span>
-													<span class="py-1 px-2 bg-muted rounded-pill fw-bold">'.$row['type'].'</span>
-												</div>
+											<div class="mt-2 text-start">
+												<span data="'.$row['periority'].'" id="priority'.$row['id'].'" class="py-1 px-2 bg-primary rounded-pill mx-1 fw-bold">'.$row['periority'].'</span>
+												<span datastatus="'.$row['status'].'" data="'.$row['type'].'" id="type'.$row['id'].'" class="py-1 px-2 bg-muted rounded-pill fw-bold">'.$row['type'].'</span>
 											</div>
-										</button> ';
+										</div>
+									</button>';
 								}
 							}
 							?>
@@ -240,22 +246,22 @@ saveTask();
 
 
 
-				    echo ' <button class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
-								<div class="">
-                                <i class="mr-3 fw-bold"><i class="fa-sharp fa-solid fa-circle-check text-green fs-25px"></i></i>
-								</div>
-								<div class="d-flex flex-column align-items-start">
-									<div class="fw-bolder text-start">'.$row['title'].'</div>
-									<div class="text-start">
-										<div class="text-muted">#1 created in '.$row['task_datetime'].'</div>
-										<div class="" title="">'.$row['description'].'..</div>
-									</div>
-									<div class="mt-2 text-start">
-										<span class="py-1 px-2 bg-primary rounded-pill mx-1 fw-bold">'.$row['periority'].'</span>
-										<span class="py-1 px-2 bg-muted rounded-pill fw-bold">'.$row['type'].'</span>
-									</div>
-								</div>
-							</button> ';
+										echo ' <button onclick="update('.$row['id'].')"  id="" class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+										<div class="">
+										<i class="mr-3 fw-bold"><i class="fa-regular fa-circle-question text-red fs-25px"></i></i>  
+										</div>
+										<div class="d-flex flex-column align-items-start">
+											<div id="title'.$row['id'].'" class="fw-bolder text-start">'.$row['title'].'</div>
+											<div class="text-start">
+												<div id="date'.$row['id'].'" data="'.$row['task_datetime'].'"  class="text-muted">#1 created in '.$row['task_datetime'].'</div>
+												<div id="description'.$row['id'].'" class="" title="">'.$row['description'].'..</div>
+											</div>
+											<div class="mt-2 text-start">
+												<span data="'.$row['periority'].'" id="priority'.$row['id'].'" class="py-1 px-2 bg-primary rounded-pill mx-1 fw-bold">'.$row['periority'].'</span>
+												<span datastatus="'.$row['status'].'" data="'.$row['type'].'" id="type'.$row['id'].'" class="py-1 px-2 bg-muted rounded-pill fw-bold">'.$row['type'].'</span>
+											</div>
+										</div>
+									</button>';
 								}
 							}
 							?>
@@ -268,6 +274,21 @@ saveTask();
 				</div>
 			</div>
 		</div>
+		<script>
+
+function update(id) {
+
+alert("hello");
+let btn_titleid = "title"+id;
+let btn_title = document.getElementById(btn_titleid).textContent;
+
+
+
+// remplire
+document.getElementById(title2).value = btn_title;
+
+}
+		</script>
 		<!-- END #content -->
 		
 		
@@ -369,7 +390,7 @@ saveTask();
 ?>
 		<!-- Modal content goes here -->
 
-		<!-- <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			<div class="modal-dialog">
 			  <div class="modal-content">
 				<div class="modal-header bg-dark">
@@ -380,6 +401,7 @@ saveTask();
 					<div class="mb-3">
 						<label  class="form-label">Title</label>
 						<input type="text" class="form-control" id="title2" placeholder="Enter card title">
+						<input type="hidden" class="hid" value="">
 					  </div>
 		
 		
@@ -403,9 +425,9 @@ saveTask();
 							<div class="col-md-4 w-100 mb-4">
 								<label for="inputState" class="form-label">Priority</label>
 								<select id="form_options_priority1" class="form-select " required >
-								<option selected value="High">High</option>
-								<option value="medium">medium</option>
-								<option value="Low">Low</option>
+								<option selected value="1">High</option>
+								<option value="2">medium</option>
+								<option value="3">Low</option>
 								</select>
 							</div>
 		
@@ -414,9 +436,9 @@ saveTask();
 							<div class="col-md-4 w-100 mb-4">
 								<label for="inputState" class="form-label">status</label>
 								<select id="form_options_status1" class="form-select " required >
-								<option selected value="To Do">To Do</option>
-								<option value="In Progress">In Progress</option>
-								<option value="Done">Done</option>
+								<option selected value="1">To Do</option>
+								<option value="2">In Progress</option>
+								<option value="3">Done</option>
 								</select>
 							</div>
 		
@@ -441,13 +463,14 @@ saveTask();
 				</div>
 			  </div>
 			</div>
-		  </div> -->
+		  </div>
 	
 	<!-- ================== BEGIN core-js ================== -->
+	
 	<script src="assets/js/vendor.min.js"></script>
 	<script src="assets/js/app.min.js"></script>
 	<script src="assets/js/data.js"></script>
-	<!-- <script src="assets/js/main.js"></script> -->
+	<script src="assets/js/main.js"></script>
 	<!-- ================== END core-js ================== -->
 	<script src="scripts.js"></script>
 
