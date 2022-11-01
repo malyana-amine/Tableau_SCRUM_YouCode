@@ -390,31 +390,32 @@ document.getElementById(title2).value = btn_title;
 ?>
 		<!-- Modal content goes here -->
 
-		<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<form method="POST" class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			<div class="modal-dialog">
 			  <div class="modal-content">
 				<div class="modal-header bg-dark">
 				  <h5 class="modal-title p-1 text-white" id="staticBackdropLabel">Modifier task</h5>
 				  <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
+				<input type="hidden" name="hid_input" class="hid" value="">
 				<div class="modal-body">
 					<div class="mb-3">
 						<label  class="form-label">Title</label>
-						<input type="text" class="form-control" id="title2" placeholder="Enter card title">
-						<input type="hidden" class="hid" value="">
+						<input name="title1" type="text" class="form-control" id="title2" placeholder="Enter card title">
+						
 					  </div>
 		
 		
 					  <div class="mb-3">
 						  <label  class="form-label">type</label>
 						  <div class="form-check">
-							  <input class="form-check-input" type="radio" name="flexRadioDefault" id="feature1">
+							  <input class="form-check-input" value="1" type="radio" name="flexRadioDefault1" id="feature1">
 							  <label class="form-check-label" for="flexRadioDefault1">
 								Feature
 							  </label>
 							</div>
 							<div class="form-check pb-3">
-							  <input class="form-check-input" type="radio" name="flexRadioDefault" id="bug1" checked>
+							  <input class="form-check-input" value="2" type="radio" name="flexRadioDefault1" id="bug1" checked>
 							  <label class="form-check-label" for="flexRadioDefault2">
 								Bug
 							  </label>
@@ -424,7 +425,7 @@ document.getElementById(title2).value = btn_title;
 		
 							<div class="col-md-4 w-100 mb-4">
 								<label for="inputState" class="form-label">Priority</label>
-								<select id="form_options_priority1" class="form-select " required >
+								<select name="priority1" id="form_options_priority1" class="form-select " required >
 								<option selected value="1">High</option>
 								<option value="2">medium</option>
 								<option value="3">Low</option>
@@ -435,7 +436,7 @@ document.getElementById(title2).value = btn_title;
 		
 							<div class="col-md-4 w-100 mb-4">
 								<label for="inputState" class="form-label">status</label>
-								<select id="form_options_status1" class="form-select " required >
+								<select name="status1" id="form_options_status1" class="form-select " required >
 								<option selected value="1">To Do</option>
 								<option value="2">In Progress</option>
 								<option value="3">Done</option>
@@ -445,12 +446,12 @@ document.getElementById(title2).value = btn_title;
 		
 						  <div class="md-form md-outline input-with-post-icon datepicker mb-3">
 							  <label for="inputState" class="form-label">Date</label>
-							  <input placeholder="Select date" type="date"  class="form-control" id="date1">
+							  <input name="date1" placeholder="Select date" type="date"  class="form-control" id="date1">
 						  </div>
 		
 						  <div class="form-group">
 							  <label for="exampleFormControlTextarea1" id="description2">Description</label>
-							  <textarea class="form-control" rows="3" id="description3"></textarea>
+							  <textarea name="description1" class="form-control" rows="3" id="description3"></textarea>
 						  </div>
 		
 						  
@@ -459,11 +460,11 @@ document.getElementById(title2).value = btn_title;
 				<div class="modal-footer">
 				  <button type="button" class="btn btn-muted rounded-pill text-black" data-bs-dismiss="modal">Cancel</button>
 				  <button type="button" class="btn btn-danger rounded-pill text-black" data-bs-dismiss="modal" id="save1" onclick="deleteTask()">delete</button>
-				  <button type="button" class="btn btn-warning rounded-pill text-black" data-bs-dismiss="modal" id="edit" onclick="editTask()">edit</button>
+				  <button type="submit" name="submit1" class="btn btn-warning rounded-pill text-black" data-bs-dismiss="modal" id="edit" onclick="">edit</button>
 				</div>
 			  </div>
 			</div>
-		  </div>
+</form>
 	
 	<!-- ================== BEGIN core-js ================== -->
 	
