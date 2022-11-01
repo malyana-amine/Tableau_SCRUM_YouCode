@@ -87,7 +87,7 @@ saveTask();
 								<div class="d-flex flex-column align-items-start">
 									<div id="title'.$row['id'].'" class="fw-bolder text-start">'.$row['title'].'</div>
 									<div class="text-start">
-										<div id="date'.$row['id'].'" data="'.$row['task_datetime'].'"  class="text-muted">#1 created in '.$row['task_datetime'].'</div>
+										<div id="date'.$row['id'].'" data="'.$row['task_datetime'].'"  class="text-muted">#'.$row['id'].' created in '.$row['task_datetime'].'</div>
 										<div id="description'.$row['id'].'" class="" title="">'.$row['description'].'..</div>
 									</div>
 									<div class="mt-2 text-start">
@@ -132,7 +132,7 @@ saveTask();
 										<div class="d-flex flex-column align-items-start">
 											<div id="title'.$row['id'].'" class="fw-bolder text-start">'.$row['title'].'</div>
 											<div class="text-start">
-												<div id="date'.$row['id'].'" data="'.$row['task_datetime'].'"  class="text-muted">#1 created in '.$row['task_datetime'].'</div>
+												<div id="date'.$row['id'].'" data="'.$row['task_datetime'].'"  class="text-muted">#'.$row['id'].' created in '.$row['task_datetime'].'</div>
 												<div id="description'.$row['id'].'" class="" title="">'.$row['description'].'..</div>
 											</div>
 											<div class="mt-2 text-start">
@@ -173,7 +173,7 @@ saveTask();
 										<div class="d-flex flex-column align-items-start">
 											<div id="title'.$row['id'].'" class="fw-bolder text-start">'.$row['title'].'</div>
 											<div class="text-start">
-												<div id="date'.$row['id'].'" data="'.$row['task_datetime'].'"  class="text-muted">#1 created in '.$row['task_datetime'].'</div>
+												<div id="date'.$row['id'].'" data="'.$row['task_datetime'].'"  class="text-muted">#'.$row['id'].' created in '.$row['task_datetime'].'</div>
 												<div id="description'.$row['id'].'" class="" title="">'.$row['description'].'..</div>
 											</div>
 											<div class="mt-2 text-start">
@@ -379,7 +379,7 @@ document.getElementById(title2).value = btn_title;
 				</div>
 				<div class="modal-footer">
 				  <button type="button" class="btn btn-muted rounded-pill text-black" data-bs-dismiss="modal">Cancel</button>
-				  <button type="button" class="btn btn-danger rounded-pill text-black" data-bs-dismiss="modal" id="save1" onclick="deleteTask()">delete</button>
+				  <button type="submit" name="submit2" class="btn btn-danger rounded-pill text-black" data-bs-dismiss="modal" id="save1" onclick="">delete</button>
 				  <button type="submit" name="submit1" class="btn btn-warning rounded-pill text-black" data-bs-dismiss="modal" id="edit" onclick="">edit</button>
 				</div>
 			  </div>

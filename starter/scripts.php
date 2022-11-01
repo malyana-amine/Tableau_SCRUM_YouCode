@@ -7,7 +7,7 @@
     //ROUTING
     if(isset($_POST['save']))        saveTask();
     if(isset($_POST['submit1']))      updateTask();
-    if(isset($_POST['delete']))      deleteTask();
+    if(isset($_POST['submit2']))      deleteTask();
     
     $sql="SELECT t.id, t.title, p.name as periority, s.name as status, tp.name as type, t.task_datetime,t.description FROM `tasks` t INNER JOIN priorities p ON t.priority_id=p.id INNER JOIN statuses s ON s.id=t.status_id INNER JOIN types tp on tp.id=t.type_id";
     $qry = mysqli_query($conn, $sql);
@@ -109,10 +109,17 @@
 
     function deleteTask()
     {
+        global $conn ;
         //CODE HERE
-        //SQL DELETE
-        $_SESSION['message'] = "Task has been deleted successfully !";
-		header('location: index.php');
+        {
+            $id   =  $_POST['hidinput'];
+            
+           $sql2 = " DELETE FROM `tasks` WHERE id = $id ";
+
+           mysqli_query($conn,$sql2);
+
+        }
+
     }
 
 ?>
