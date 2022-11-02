@@ -22,8 +22,8 @@
 <body>
 <?php
 global $conn ;
-saveTask();	
-global $conteur ;
+saveTask();
+getTasks();
 ?>
 
 	<!-- BEGIN #app -->
