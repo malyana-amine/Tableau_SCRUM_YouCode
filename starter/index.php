@@ -70,6 +70,8 @@ global $conteur ;
 
 									if ( $row['status'] == 'To Do' ){
 
+										$x = substr(''.$row['description'].'', 0, 60);
+
 													
 
 									
@@ -82,7 +84,7 @@ global $conteur ;
 									<div id="title'.$row['id'].'" class="fw-bolder text-start">'.$row['title'].'</div>
 									<div class="text-start">
 										<div id="date'.$row['id'].'" data="'.$row['task_datetime'].'"  class="text-muted">#'.$row['id'].' created in '.$row['task_datetime'].'</div>
-										<div id="description'.$row['id'].'" class="" title="">'.$row['description'].'..</div>
+										<div id="description'.$row['id'].'" class="" title="'.$row['description'].'">'.$x.'..</div>
 									</div>
 									<div class="mt-2 text-start">
 										<span data="'.$row['periority'].'" id="priority'.$row['id'].'" class="py-1 px-2 bg-primary rounded-pill mx-1 fw-bold">'.$row['periority'].'</span>
@@ -117,6 +119,8 @@ global $conteur ;
 								foreach(array_values($GLOBALS['result']) as $row ){
 
 									if ( $row['status'] === 'In progress' ){
+
+										$x = substr(''.$row['description'].'', 0, 60);
 										
 
 										echo ' <button onclick="update('.$row['id'].')"  id="" class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
@@ -127,7 +131,7 @@ global $conteur ;
 											<div id="title'.$row['id'].'" class="fw-bolder text-start">'.$row['title'].'</div>
 											<div class="text-start">
 												<div id="date'.$row['id'].'" data="'.$row['task_datetime'].'"  class="text-muted">#'.$row['id'].' created in '.$row['task_datetime'].'</div>
-												<div id="description'.$row['id'].'" class="" title="">'.$row['description'].'..</div>
+												<div id="description'.$row['id'].'" class="" title="'.$row['description'].'">'.$x.'...</div>
 											</div>
 											<div class="mt-2 text-start">
 												<span data="'.$row['periority'].'" id="priority'.$row['id'].'" class="py-1 px-2 bg-primary rounded-pill mx-1 fw-bold">'.$row['periority'].'</span>
@@ -157,7 +161,7 @@ global $conteur ;
 
 									if ( $row['status'] === 'Done' ){
 										
-
+										$x = substr(''.$row['description'].'', 0, 60);
 
 
 										echo ' <button onclick="update('.$row['id'].')"  id="" class="py-2 d-flex align-items-center gap-4 px-3 rounded border-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
@@ -168,7 +172,7 @@ global $conteur ;
 											<div id="title'.$row['id'].'" class="fw-bolder text-start">'.$row['title'].'</div>
 											<div class="text-start">
 												<div id="date'.$row['id'].'" data="'.$row['task_datetime'].'"  class="text-muted">#'.$row['id'].' created in '.$row['task_datetime'].'</div>
-												<div id="description'.$row['id'].'" class="" title="'.$row['description'].'">'.$row['description'].'...</div>
+												<div id="description'.$row['id'].'" class="" title="'.$row['description'].'">'.$x.'...</div>
 											</div>
 											<div class="mt-2 text-start">
 												<span data="'.$row['periority'].'" id="priority'.$row['id'].'" class="py-1 px-2 bg-primary rounded-pill mx-1 fw-bold">'.$row['periority'].'</span>
