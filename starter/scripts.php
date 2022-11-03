@@ -1,18 +1,12 @@
 <?php
     //INCLUDE DATABASE FILE
     include('database.php');
-    //SESSSION IS A WAY TO STORE DATA TO BE USED ACROSS MULTIPLE PAGES
-    session_start();
 
     //ROUTING
     if(isset($_POST['save']))        saveTask();
     if(isset($_POST['submit1']))      updateTask();
     if(isset($_POST['submit2']))      deleteTask();
     
-    // $sql="SELECT t.id, t.title, p.name as periority, s.name as status, tp.name as type, t.task_datetime,t.description FROM `tasks` t INNER JOIN priorities p ON t.priority_id=p.id INNER JOIN statuses s ON s.id=t.status_id INNER JOIN types tp on tp.id=t.type_id";
-    // $qry = mysqli_query($conn, $sql);
-    // while($row = mysqli_fetch_assoc($qry))
-    // $GLOBALS['result'][] = $row;
 
 
 
@@ -32,14 +26,9 @@
          $GLOBALS['result'][] = $row;
     }
    
-            return $GLOBALS['result'];
-            var_dump ($GLOBALS['result']['t.priority_id']);
-
-         
+            return $GLOBALS['result']; 
 
     }
-
-    
 
 
     function saveTask()
@@ -63,11 +52,6 @@
             header('location: index.php');
          }
 
-
-
-        //SQL INSERT
-        // $_SESSION['message'] = "Task has been added successfully !";
-		// header('location: index.php');
     }
 
 
@@ -94,9 +78,7 @@
                  WHERE `id`='$id'";
 
             mysqli_query($conn,$sql1);
-        //SQL UPDATE
-        $_SESSION['message'] = "Task has been updated successfully !";
-		header('location: index.php');
+
     }
     }
 

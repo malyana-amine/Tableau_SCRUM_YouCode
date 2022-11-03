@@ -49,10 +49,7 @@ if (btn_status === "In progress"){
 if (btn_status === "Done"){
     document.getElementById("form_options_status1").value = 3;
 }
-
 document.getElementById("hid").value = id ;
-
 document.getElementById("date1").value = btn_date;
 document.getElementById("description3").value = btn_description;
-
 }

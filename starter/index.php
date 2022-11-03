@@ -194,18 +194,6 @@ getTasks();
 		</div>
 		<script>
 
-function update(id) {
-
-alert("hello");
-let btn_titleid = "title"+id;
-let btn_title = document.getElementById(btn_titleid).textContent;
-
-
-
-// remplire
-document.getElementById(title2).value = btn_title;
-
-}
 		</script>
 		<!-- END #content -->
 		
